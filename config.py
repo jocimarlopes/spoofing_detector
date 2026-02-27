@@ -41,7 +41,7 @@ class SpoofConfig:
 
     to_address: str = field(default_factory=lambda: os.getenv("SPOOF_TO_ADDRESS", ""))
     reply_to: Optional[str] = field(default_factory=lambda: os.getenv("SPOOF_REPLY_TO") or None)
-    subject: str = field(default_factory=lambda: os.getenv("SPOOF_SUBJECT", "[POC] Spoofing Test"))
+    subject: str = "[POC] Spoofing Test"
 
     body_text: str = field(default_factory=lambda: (
         "This is a proof-of-concept email demonstrating an email spoofing vulnerability.\n\n"
