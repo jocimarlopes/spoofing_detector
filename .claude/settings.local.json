@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import dns.resolver; answers = dns.resolver.resolve\\(''jolosystems.com'', ''MX''\\); [print\\(r.preference, str\\(r.exchange\\)\\) for r in sorted\\(answers, key=lambda r: r.preference\\)]\")",
+      "Bash(dig MX jolosystems.com +short)",
+      "Bash(pip install python-dotenv --quiet)",
+      "Bash(source venv/bin/activate)"
+    ]
+  }
+}
