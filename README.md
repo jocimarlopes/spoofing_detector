@@ -22,20 +22,30 @@ Edit `.env` with:
 
 ## Usage
 
-Check domain records:
+### Interactive Menu (Recommended)
+
 ```bash
-python check_records.py example.com
+python main.py
 ```
 
-Send spoofed email:
+Menu options:
+- **Domain Analysis** — Check SPF/DKIM/DMARC records
+- **Send Spoofed Email** — Choose delivery mode (relay/direct/local)
+- **Local Relay Server** — Start/stop background relay
+- **View Configuration** — Show current .env settings
+
+### Command Line (Direct)
+
 ```bash
+# Check domain records
+python check_records.py example.com
+
+# Send spoofed email
 python spoof.py                # via relay
 python spoof.py --direct       # direct to MX (port 25)
-python spoof.py --local        # via local open relay
-```
+python spoof.py --local        # via local relay
 
-Run local relay (for --local mode):
-```bash
+# Start local relay
 python local_relay.py
 ```
 
