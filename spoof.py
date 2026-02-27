@@ -40,7 +40,15 @@ def build_email(spoof: SpoofConfig) -> MIMEMultipart:
     msg["To"] = spoof.to_address
     msg["Subject"] = spoof.subject
     msg["Date"] = formatdate(localtime=True)
-    msg["Message-ID"] = make_msgid(domain=spoof.from_address.split("@")[1])
+
+    # Extract domain from from_address for Message-ID
+    try:
+        domain = spoof.from_address.split("@")[1]
+    except IndexError:
+        print("[!] Error: SPOOF_FROM_ADDRESS must be a valid email (e.g., user@example.com)")
+        sys.exit(1)
+
+    msg["Message-ID"] = make_msgid(domain=domain)
 
     if spoof.reply_to:
         msg["Reply-To"] = spoof.reply_to
